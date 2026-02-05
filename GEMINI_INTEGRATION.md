@@ -2,9 +2,9 @@
 
 # 🤖 Gemini AI Integration
 
-### *The Brain Behind the Magic*
+### *The AI layer behind the experience*
 
-**How we transform natural language into living, breathing animations**
+**How we use Gemini to create living, breathing animations**
 
 </div>
 
@@ -12,7 +12,7 @@
 
 ## 🎯 Overview
 
-Stickman Productivity uses **Google Gemini AI** to convert plain English descriptions into fully animated vector graphics. This isn't image generation—it's **structured data generation** that powers real-time animations synchronized with your focus timer.
+Stickman Productivity uses **Google Gemini AI** to convert plain English descriptions into fully animated stickman vector graphics. This is av**structured data generation** that powers real time animations synchronized with your focus timer.
 
 ```mermaid
 graph LR
