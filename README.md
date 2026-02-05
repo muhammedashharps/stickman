@@ -58,7 +58,7 @@ Watch a tiny stickman build a bridge as you work. See a plant grow with each pas
 ### 🤖 Gemini Animation Creator
 **The core of this app** — powered by Google Gemini AI:
 - Type what you imagine → Gemini generates animated vector graphics
-- Uses structured prompts to create circles, lines & rectangles
+- Gemini understands your words and builds the scene for you
 - **Every animation syncs live with your focus timer progress**
 - Refine your creation through conversational feedback
 - Unlimited custom animations saved locally
