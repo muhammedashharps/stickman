@@ -12,7 +12,28 @@
 
 ---
 
+## 📥 Download
+
+[![Download APK](https://img.shields.io/badge/Download-APK-brightgreen?style=for-the-badge&logo=android&logoColor=white)](https://github.com/muhammedashharps/stickman/raw/main/stickman-productivity.apk)
+
+**[Click here to download the app directly!](https://github.com/muhammedashharps/stickman/raw/main/stickman-productivity.apk)**
+
+---
+
 **[Features](#-features) • [How It Works](#-how-it-works) • [AI Magic](#-ai-magic) • [Installation](#-installation) • [Documentation](#-documentation)**
+
+</div>
+
+---
+
+## 📱 App Screenshots
+
+<div align="center">
+
+| | | |
+|:---:|:---:|:---:|
+| ![Screenshot 1](screenshots/screen1.png) | ![Screenshot 2](screenshots/screen2.png) | ![Screenshot 3](screenshots/screen3.png) |
+| ![Screenshot 4](screenshots/screen4.png) | ![Screenshot 5](screenshots/screen5.png) | ![Screenshot 6](screenshots/screen6.png) |
 
 </div>
 
@@ -34,38 +55,30 @@ Watch a tiny stickman build a bridge as you work. See a plant grow with each pas
 <tr>
 <td width="50%">
 
-### 🎬 6 Preset Animations
-Hand-crafted, physics-based stickman companions:
-- 🌱 **Plant Growth** — Nurture a garden
-- ⛰️ **Mountain Climb** — Conquer the summit  
-- 💡 **Bulb Ladder** — Light up ideas
-- 🌉 **Bridge Builder** — Connect worlds
-- 🧗 **Cliff Climb** — Scale new heights
-- 💧 **Water Tank** — Fill with patience
-
-</td>
-<td width="50%">
-
 ### 🤖 AI Animation Creator
 Powered by **Google Gemini**:
 - Describe any scene in natural language
 - AI generates animated vector graphics
+- **Animations sync with your focus timer**
 - Iterate and refine through conversation
 - Save unlimited custom animations
 
 </td>
-</tr>
-<tr>
-<td>
+<td width="50%">
 
-### ⏱️ Smart Timer
-- Wheel-style duration picker
-- 1-180 minute range
-- **Background persistence** — continues when minimized
-- Completion sounds
+### 🎬 6 Preset Animations
+Hand-crafted stickman companions:
+- 🌱 **Plant Growth**
+- ⛰️ **Mountain Climb**
+- 💡 **Bulb Ladder**
+- 🌉 **Bridge Builder**
+- 🧗 **Cliff Climb**
+- 💧 **Water Tank**
 
 </td>
-<td>
+</tr>
+<tr>
+<td colspan="2">
 
 ### 📊 Rich Statistics  
 - Daily/Weekly/Monthly/Yearly views
@@ -150,8 +163,8 @@ sequenceDiagram
 
 ```bash
 # Clone
-git clone https://github.com/yourusername/stickman_productivity.git
-cd stickman_productivity
+git clone https://github.com/muhammedashharps/stickman.git
+cd stickman
 
 # Install dependencies
 flutter pub get
@@ -167,41 +180,6 @@ flutter run
 
 ---
 
-## 📁 Project Structure
-
-```mermaid
-graph LR
-    subgraph UI [Screens]
-        HS[home_screen.dart]
-        TS[timer_screen.dart]
-        CS[create_animation_screen.dart]
-        SS[stats_screen.dart]
-    end
-    
-    subgraph Logic [Providers]
-        TP[timer_provider.dart]
-        AP[animation_creator_provider.dart]
-        SP[statistics_provider.dart]
-    end
-    
-    subgraph Services [Services]
-        GS[gemini_service.dart]
-        AS[audio_service.dart]
-    end
-    
-    subgraph Widgets [Widgets]
-        AW[animation_widgets.dart]
-        AIW[ai_animation_widget.dart]
-    end
-    
-    UI --> Logic
-    Logic --> Services
-    Logic --> Widgets
-    Services -.->|Gemini API| GS
-```
-
----
-
 ## 📚 Documentation
 
 | Document | Description |
@@ -211,23 +189,8 @@ graph LR
 
 ---
 
-## 🏆 Hackathon Submission
-
-> **Built for the Gemini AI Hackathon**
-
-### Innovation Highlights
-
-1. **Text → Animated Graphics**: Gemini generates structured JSON, not just text/images
-2. **Timer-Synced Animations**: The `progress` animation type creates live session feedback
-3. **Iterative Refinement**: Users improve animations conversationally
-4. **Infinite Creativity**: Any scene imaginable becomes a focus companion
-
----
-
 <div align="center">
 
 ### Made with ❤️ and Gemini AI
-
-**[⬆ Back to Top](#-stickman-productivity)**
 
 </div>
