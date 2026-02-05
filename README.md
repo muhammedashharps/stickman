@@ -1,8 +1,8 @@
 <div align="center">
 
-# 🎯 Stickman Productivity
+# 🎯 Stickman Focus
 
-### *Where Focus Meets Art*
+### *Where Productivity is felt than counted*
 
 **An AI-powered productivity timer with animated companions that bring your focus sessions to life**
 
