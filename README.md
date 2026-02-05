@@ -2,9 +2,9 @@
 
 # 🎯 Stickman Focus
 
-### *Where Productivity is felt than counted*
+### *Where Productivity is actually felt*
 
-**An AI-powered productivity timer with animated companions that bring your focus sessions to life**
+**A focus timer that replaces countdowns with animated progress, powered by Gemini AI**
 
 [![Flutter](https://img.shields.io/badge/Flutter-02569B?style=for-the-badge&logo=flutter&logoColor=white)](https://flutter.dev)
 [![Gemini AI](https://img.shields.io/badge/Gemini_AI-8E75B2?style=for-the-badge&logo=google&logoColor=white)](https://deepmind.google/technologies/gemini/)
