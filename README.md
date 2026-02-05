@@ -55,13 +55,13 @@ Watch a tiny stickman build a bridge as you work. See a plant grow with each pas
 <tr>
 <td width="50%">
 
-### 🤖 AI Animation Creator
-Powered by **Google Gemini**:
-- Describe any scene in natural language
-- AI generates animated vector graphics
-- **Animations sync with your focus timer**
-- Iterate and refine through conversation
-- Save unlimited custom animations
+### 🤖 Gemini Animation Creator
+**The core of this app** — powered by Google Gemini AI:
+- Type what you imagine → Gemini generates animated vector graphics
+- Uses structured prompts to create circles, lines & rectangles
+- **Every animation syncs live with your focus timer progress**
+- Refine your creation through conversational feedback
+- Unlimited custom animations saved locally
 
 </td>
 <td width="50%">
