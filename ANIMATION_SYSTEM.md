@@ -2,7 +2,7 @@
 
 # 🎨 Animation System
 
-### *The Engine That Brings Focus to Life*
+### *The System that renders Gemini 3 output to animation.*
 
 **From code to canvas: how we render timer-synchronized animations**
 
@@ -25,62 +25,29 @@ Both share a critical feature: **progress synchronization** with the focus timer
 
 ## 🔄 The Render Loop
 
-```mermaid
-flowchart LR
-    subgraph Timer["⏱️ Timer Provider"]
-        TP[TimerProvider]
-        PROG[progress: 0.0 → 1.0]
-    end
-    
-    subgraph Animation["🎨 Animation Widget"]
-        AW[AnimationController]
-        CP[CustomPainter]
-        CVS[Canvas]
-    end
-    
-    TP --> |remainingTime / totalDuration| PROG
-    PROG --> |Rebuild trigger| AW
-    AW --> |animValue + progress| CP
-    CP --> |Draw calls| CVS
-    CVS --> |60 FPS| DISPLAY[📱 Display]
-```
+Every frame on screen follows this pipeline:
 
----
+```mermaid
+graph TD
+    A[TimerProvider fires every 500ms] --> B[Calculate how much time has passed since session started]
+    B --> C[Convert elapsed time into a progress value from 0.0 to 1.0]
+    C --> D[Notify Flutter that animation widget needs to rebuild]
+    D --> E[Animation widget receives new progress value]
+    E --> F[Loop through every element in the scene]
+    F --> G{Does this element have animations?}
+    G -->|Yes| H[Recalculate position, size, or color based on animation type and progress]
+    G -->|No| I[Keep element as-is]
+    H --> J[CustomPainter draws the updated shape onto the Canvas]
+    I --> J
+    J --> K{More elements to draw?}
+    K -->|Yes| F
+    K -->|No| L[Complete frame rendered on screen at 60 FPS]
+    L -->|Next tick| A
+```
 
 ## 🎬 Preset Animations
 
-### Widget Hierarchy
-
-```mermaid
-classDiagram
-    class StatefulWidget {
-        +createState()
-    }
-    
-    class AnimationWidgetState {
-        +AnimationController _controller
-        +progress: double
-        +isRunning: bool
-        +build() Widget
-    }
-    
-    class CustomPainter {
-        +paint(Canvas, Size)
-        +shouldRepaint() bool
-    }
-    
-    StatefulWidget <|-- PlantGrowthWidget
-    StatefulWidget <|-- MountainClimbWidget
-    StatefulWidget <|-- BulbLadderWidget
-    StatefulWidget <|-- BridgeBuilderWidget
-    StatefulWidget <|-- CliffClimbWidget
-    StatefulWidget <|-- WaterTankWidget
-    
-    PlantGrowthWidget --> AnimationWidgetState
-    AnimationWidgetState --> CustomPainter
-```
-
-### The Six Companions
+### There are six preset animations
 
 ```mermaid
 timeline
@@ -199,130 +166,6 @@ flowchart LR
     PULSE --> |"(sin(t)+1)/2 × magnitude"| SCALE["Scaling<br/>Heartbeat, emphasis"]
 ```
 
-### The Magic of `progress` Type
-
-This is what makes animations **session-aware**:
-
-```mermaid
-sequenceDiagram
-    participant T as ⏱️ Timer
-    participant P as 📊 Progress
-    participant A as 🎨 Animation
-    participant E as 📐 Element
-    
-    T->>P: remaining = 15:00 / 25:00
-    P->>A: progress = 0.4 (40% done)
-    A->>E: Apply progress animations
-    
-    Note over E: Stem height = 0 + (0.4 × 0.3)<br/>= 0.12 (12% of canvas)
-    
-    E->>A: Updated properties
-    A->>T: Visual feedback rendered
-```
-
----
-
-## 🖌️ Rendering Pipeline
-
-### Step-by-Step Canvas Drawing
-
-```mermaid
-flowchart TD
-    START[paint() called] --> BG["Draw Background<br/>canvas.drawRect(bgColor)"]
-    
-    BG --> LOOP["For each element in config.elements"]
-    
-    LOOP --> CALC["Calculate animated values"]
-    
-    CALC --> TYPE{Element Type?}
-    
-    TYPE --> |Circle| CIRC["drawCircle(<br/>  Offset(cx, cy),<br/>  radius,<br/>  paint<br/>)"]
-    
-    TYPE --> |Line| LINE["drawLine(<br/>  Offset(x1, y1),<br/>  Offset(x2, y2),<br/>  paint<br/>)"]
-    
-    TYPE --> |Rect| RECT["drawRect(<br/>  Rect.fromLTWH(x, y, w, h),<br/>  paint<br/>)"]
-    
-    CIRC --> NEXT[Next element]
-    LINE --> NEXT
-    RECT --> NEXT
-    
-    NEXT --> |More elements| LOOP
-    NEXT --> |Done| END[Frame complete]
-```
-
-### Animation Value Calculation
-
-```dart
-double _animate(element, property, baseValue) {
-  for (anim in element.animations) {
-    if (anim.property == property) {
-      switch (anim.type) {
-        case 'sine':
-          return base + sin(animValue × 2π × speed) × magnitude;
-        case 'linear':
-          return base + (animValue × speed % 1) × magnitude;
-        case 'progress':
-          return base + timerProgress × magnitude;  // 🎯 KEY!
-        case 'pulse':
-          return base + ((sin(animValue × 2π × speed) + 1) / 2) × magnitude;
-      }
-    }
-  }
-  return baseValue;
-}
-```
-
----
-
-## ⏱️ Timer Synchronization
-
-```mermaid
-stateDiagram-v2
-    [*] --> Idle: App opened
-    
-    Idle --> Running: Start pressed
-    Running --> Running: Every 500ms tick
-    
-    state Running {
-        [*] --> Calculate
-        Calculate --> Notify
-        Notify --> Rebuild
-        Rebuild --> Paint
-        Paint --> [*]
-        
-        note right of Calculate
-            elapsed = now - startTime
-            remaining = pausedRemaining - elapsed
-            progress = 1 - (remaining / total)
-        end note
-    }
-    
-    Running --> Paused: Pause pressed
-    Paused --> Running: Resume pressed
-    Running --> Complete: remaining ≤ 0
-    
-    Complete --> [*]: Celebration + Sound
-```
-
-### Background Persistence
-
-The timer uses **DateTime-based calculation**, not tick counting:
-
-```mermaid
-flowchart LR
-    subgraph Before["❌ Old Approach"]
-        TICK["Timer.periodic(1s)"]
-        COUNT["remaining--"]
-        PROBLEM["Stops in background!"]
-    end
-    
-    subgraph After["✅ Current Approach"]
-        START["Store startTime"]
-        CALC["remaining = pausedRemaining - (now - startTime)"]
-        WORKS["Works even after hours in background"]
-    end
-```
-
 ---
 
 ## 📁 File Reference
@@ -333,31 +176,7 @@ flowchart LR
 | `plant_growth_widget.dart` | Plant growth animation (most complex) |
 | `ai_animation_widget.dart` | AI animation renderer with CustomPainter |
 | `ai_animation_config.dart` | JSON parsing and data models |
-| `timer_provider.dart` | Progress calculation and background handling |
-
----
-
-## 🎯 Key Insights
-
-```mermaid
-mindmap
-  root((Animation<br/>System))
-    Dual Sources
-      Preset widgets
-      AI-generated JSON
-    Unified Interface
-      progress prop
-      isRunning prop
-      Same parent widget
-    Timer Sync
-      progress type
-      Real-time mapping
-      Background safe
-    Canvas Rendering
-      60 FPS
-      CustomPainter
-      Device independent
-```
+| `timer_provider.dart` | Progress time calculation and background handling |
 
 ---
 
