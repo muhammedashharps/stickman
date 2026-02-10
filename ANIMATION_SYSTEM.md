@@ -29,7 +29,7 @@ Every frame on screen follows this pipeline:
 
 ```mermaid
 graph TD
-    A[TimerProvider fires every 500ms] --> B[Calculate how much time has passed since session started]
+    A[TimerProvider updates every 500ms] --> B[Calculate how much time has passed since session started]
     B --> C[Convert elapsed time into a progress value from 0.0 to 1.0]
     C --> D[Notify Flutter that animation widget needs to rebuild]
     D --> E[Animation widget receives new progress value]
