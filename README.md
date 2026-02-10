@@ -45,7 +45,7 @@ Traditional timers are **boring**. You stare at numbers counting down. There's n
 
 **Stickman Productivity transforms this experience.** 
 
-Watch a tiny stickman build a bridge as you work. See a plant grow with each passing minute. Or describe ANY scene you can imagine—and watch our **Gemini AI** bring it to life, synchronized perfectly with your timer.
+Watch a tiny stickman build a bridge as you work. See a plant grow with each passing minute. Or describe ANY scene you can imagine and watch our **Gemini AI** bring it to life, synchronized perfectly with your timer.
 
 ---
 
@@ -119,9 +119,7 @@ graph TD
 
 ---
 
-## 🧠 AI Magic
-
-### The Gemini Integration Flow
+## 🧠 Gemini Integration Workflow
 
 ```mermaid
 sequenceDiagram
@@ -190,6 +188,6 @@ flutter run
 
 <div align="center">
 
-### Made with ❤️ and Gemini AI
+### Made with Gemini AI and Flutter
 
 </div>
