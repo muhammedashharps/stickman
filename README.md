@@ -31,8 +31,8 @@
 
 | | | |
 |:---:|:---:|:---:|
-| ![Screenshot 1](screenshots/screen1.gif) | ![Screenshot 2](screenshots/screen2.gif) | ![Screenshot 3](screenshots/screen3.gif) |
-| ![Screenshot 4](screenshots/screen4.gif) | ![Screenshot 5](screenshots/screen5.gif) | ![Screenshot 6](screenshots/screen6.gif) |
+| ![Screenshot 1](screen1.gif) | ![Screenshot 2](screen2.gif) | ![Screenshot 3](screen3.gif) |
+| ![Screenshot 4](screen4.gif) | ![Screenshot 5](screen5.gif) | ![Screenshot 6](screen6.gif) |
 
 </div>
 
