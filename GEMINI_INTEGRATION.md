@@ -198,38 +198,9 @@ When a user says *"A stickman cycling towards the checkpoint*, Gemini doesn't re
 
 Every response contains:
 1. **A background color** for the scene
-2. **A list of elements** — each one is a simple shape (a dot, a line, or a rectangle)
-3. **Animations attached to elements** — telling each shape how to move over time
+2. **A list of elements:** each one is a simple shape (a dot, a line, or a rectangle)
+3. **Animations attached to elements:** telling each shape how their position changes overtime
 
-### Class Diagram
-
-```mermaid
-classDiagram
-    class AIAnimationConfig {
-        +String backgroundColor
-        +List elements
-    }
-    
-    class AnimationElement {
-        +String id
-        +String type
-        +String color
-        +double strokeWidth
-        +bool filled
-        +Map properties
-        +List animations
-    }
-    
-    class ElementAnimation {
-        +String property
-        +String type
-        +double speed
-        +double magnitude
-    }
-    
-    AIAnimationConfig "1" --> "*" AnimationElement
-    AnimationElement "1" --> "*" ElementAnimation
-```
 
 ### Full Example: What Gemini Actually Returns
 
@@ -384,7 +355,7 @@ Below is a **real JSON response** from Gemini for the prompt *"A stickman wateri
 | `progress` | **⭐ Timer-synced** — changes proportionally as your session runs | `value = base + timerProgress × magnitude` | A wall growing taller as you focus |
 | `pulse` | **Rhythmic scaling** — gets bigger and smaller repeatedly | `value = base + ((sin(time)+1)/2) × magnitude` | A glowing light pulsing |
 
-> **The `progress` type is our core innovation.** It's the bridge between Gemini's output and the timer. When Gemini assigns `"type": "progress"` to a plant's height, that plant isn't just animated randomly — it grows *because you're working*. Timer at 50%? Plant is at 50%. Timer done? Plant is fully grown. This creates a direct emotional link between effort and visual reward.
+> **The `progress` type is our core innovation.** It directly connects Gemini's output to the focus timer. When Gemini assigns `"type": "progress"` to a plant's height, that plant doesn't animate randomly, instead it grows in proportion to the time set by the user. At 50% of your timer session, the plant is half-grown. When the timer completes, the plant is fully grown. Your effort becomes visible, creating a tangible reward for staying focused.
 
 ---
 
@@ -461,25 +432,27 @@ graph TD
 ## 🏆 Why This Is Innovative
 
 ```mermaid
-graph TD
-    Root((Gemini Integration)) --> A[Structured Output]
-    Root --> B[Animation Sync]
-    Root --> C[Iterative Design]
-    Root --> D[Infinite Creativity]
-    
-    A --> A1[Valid JSON]
-    A --> A2[Parseable Data]
-    
-    B --> B1[Progress Type]
-    B --> B2[Timer Aware]
-    
-    C --> C1[Conversational]
-    C --> C2[Build on Previous]
-    
-    D --> D1[Natural Language]
-    D --> D2[Any Scene]
+graph LR
+    subgraph A [1. Structured Output]
+        A1[Gemini returns valid JSON] --> A2[App parses it into drawable shapes]
+    end
+
+    subgraph B [2. Timer-Synced Animation]
+        B1[Progress animation type] --> B2[Visuals grow as timer counts down]
+    end
+
+    subgraph C [3. Iterative Refinement]
+        C1[User gives feedback in plain text] --> C2[Gemini modifies existing JSON]
+    end
+
+    subgraph D [4. Unlimited Creativity]
+        D1[User describes any scene] --> D2[Gemini generates it in seconds]
+    end
+
+    A --> B --> C --> D
 ```
 
+---
 ---
 
 <div align="center">
