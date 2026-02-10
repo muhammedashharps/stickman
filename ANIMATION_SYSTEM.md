@@ -42,7 +42,7 @@ graph TD
     J --> K{More elements to draw?}
     K -->|Yes| F
     K -->|No| L[Complete frame rendered on screen at 60 FPS]
-    L -->|Next tick| A
+    L -->|Repeats every 500ms| A
 ```
 
 ## 🎬 Preset Animations
