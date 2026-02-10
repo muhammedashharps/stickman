@@ -8,7 +8,6 @@
 
 [![Flutter](https://img.shields.io/badge/Flutter-02569B?style=for-the-badge&logo=flutter&logoColor=white)](https://flutter.dev)
 [![Gemini AI](https://img.shields.io/badge/Gemini_AI-8E75B2?style=for-the-badge&logo=google&logoColor=white)](https://deepmind.google/technologies/gemini/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](LICENSE)
 
 ---
 
@@ -20,7 +19,7 @@
 
 ---
 
-**[Features](#-features) • [How It Works](#-how-it-works) • [AI Magic](#-ai-magic) • [Installation](#-installation) • [Documentation](#-documentation)**
+**[Features](#-features) • [How It Works](#-how-it-works) • [Gemini Integration](https://github.com/muhammedashharps/stickman/blob/main/GEMINI_INTEGRATION.md) • [Installation](#-installation) • [Documentation](#-documentation)**
 
 </div>
 
@@ -32,8 +31,8 @@
 
 | | | |
 |:---:|:---:|:---:|
-| ![Screenshot 1](screenshots/screen1.png) | ![Screenshot 2](screenshots/screen2.png) | ![Screenshot 3](screenshots/screen3.png) |
-| ![Screenshot 4](screenshots/screen4.png) | ![Screenshot 5](screenshots/screen5.png) | ![Screenshot 6](screenshots/screen6.png) |
+| ![Screenshot 1](screenshots/screen1.gif) | ![Screenshot 2](screenshots/screen2.gif) | ![Screenshot 3](screenshots/screen3.gif) |
+| ![Screenshot 4](screenshots/screen4.gif) | ![Screenshot 5](screenshots/screen5.gif) | ![Screenshot 6](screenshots/screen6.gif) |
 
 </div>
 
